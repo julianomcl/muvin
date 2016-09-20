@@ -22,4 +22,4 @@ Lucas Santana - 9050204
 
 **Heroku:** https://muvin.herokuapp.com/
 
-**Pivotal Tracker:** https://www.pivotaltracker.com/n/projects/1857715
+**Pivotal Tracker:** https://www.pivotaltracker.com/n/projects/1862733
