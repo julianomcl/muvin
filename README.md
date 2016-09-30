@@ -6,6 +6,8 @@ Membros do grupo:
 
 Adriano Vicente Froncillo - 7140437
 
+Bruno Marques Feiteiro - 8641809
+
 Danilo Vieira de Paula - 6776296
 
 Juliano da Maia da Cruz Leite - 8921691
