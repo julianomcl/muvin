@@ -1,0 +1,32 @@
+<div class="login">
+  <div class="container">
+    <div class="form">
+      <h1>Cadastre-se</h1>
+      <%= form_for(@user) do |u| %>
+          <div class="field">
+            <%= u.label :nome %>
+            <%= u.text_field :first_name %>
+          </div>
+          <div class="field">
+            <%= u.label :sobrenome %>
+            <%= u.text_field :last_name %>
+          </div>
+          <div class="field">
+            <%= u.label :email %>
+            <%= u.email_field :email %>
+          </div>
+          <div class="field">
+            <%= u.label :senha %>
+            <%= u.password_field :password %>
+          </div>
+          <div class="field">
+            <%= u.label :usuario_lastfm %>
+            <%= u.text_field :lastfm_username %>
+          </div>
+          <div class="actions">
+            <%= u.submit "Cadastrar-se" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
