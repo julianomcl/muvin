@@ -53,6 +53,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  get 'signup' => 'users#new'
+  get 'signup' => 'users#new', as: :sign_up
   resources :users
 end
