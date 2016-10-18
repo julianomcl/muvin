@@ -12,4 +12,4 @@ Feature: As An Anonymous User
     And I fill in "user_lastfm_username" with "Juliano_maia"
     And I press "Cadastrar-se"
     Then I should be on the homepage
-    And I should be a user of the system
+    And I should be a user of the system with email "leite.juliano@gmail.com"

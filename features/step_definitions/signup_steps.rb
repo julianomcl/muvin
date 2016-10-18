@@ -11,14 +11,13 @@ When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, content|
 end
 
 When(/^I press "([^"]*)"$/) do |button|
-  click_on button
-  @current_user = User.create!(:email => 'leite.juliano@gmail.com', :password => '123')
+  click_button button
 end
 
 Then(/^I should be on the homepage$/) do
   assert_current_path '/'
 end
 
-Then(/^I should be a user of the system$/) do
-  @current_user == User.find(@current_user.id)
+Then(/^I should be a user of the system with email "([^"]*)"$/) do |email|
+  User.find_by_email!(email)
 end
