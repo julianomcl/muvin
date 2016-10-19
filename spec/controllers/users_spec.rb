@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe UsersController, :type => :controller do
+describe UsersController, type: :controller do
 
   describe 'GET :new' do
     it 'should respond successfully' do
       get :new
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(:success)
     end
   end
 
