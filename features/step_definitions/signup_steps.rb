@@ -15,7 +15,7 @@ When(/^I press "([^"]*)"$/) do |button|
 end
 
 Then(/^I should be on the homepage$/) do
-  assert_current_path '/'
+  assert_current_path root_path
 end
 
 Then(/^I should be a user of the system with email "([^"]*)"$/) do |email|
