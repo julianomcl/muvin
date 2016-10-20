@@ -5,5 +5,9 @@ gemfile:
   - Gemfile
 before_install:
   - gem install nokogiri -- --with-cflags='--std=gnu99'
+notifications:
+  slack:
+    on_success: change
+    on_failure: change
 
 script: bundle exec rspec spec
