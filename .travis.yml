@@ -3,5 +3,7 @@ rvm:
  - 2.2
 gemfile:
   - Gemfile
+before_install:
+  - gem install nokogiri -- --with-cflags='--std=gnu99'
 
 script: bundle exec rspec spec
