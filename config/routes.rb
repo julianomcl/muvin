@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # get 'index' => 'welcome#index'
   # get '/' => 'welcome#index'
-  get 'signup' => 'users#new', as: :sign_up
+  get '/signup' => 'users#new', as: :sign_up
+  post '/signup' => 'users#create'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
