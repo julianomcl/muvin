@@ -38,6 +38,7 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
+    bcrypt (3.1.11)
     bcrypt (3.1.11-x86-mingw32)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -108,9 +109,13 @@ GEM
     minitest (5.9.1)
     multi_json (1.12.1)
     multi_test (0.1.2)
+    nokogiri (1.6.8)
+      mini_portile2 (~> 2.1.0)
+      pkg-config (~> 1.1.7)
     nokogiri (1.6.8-x86-mingw32)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    pg (0.19.0)
     pg (0.19.0-x86-mingw32)
     phantomjs (2.1.1.0)
     pkg-config (1.1.7)
@@ -205,6 +210,7 @@ GEM
       nokogiri (~> 1.3)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
