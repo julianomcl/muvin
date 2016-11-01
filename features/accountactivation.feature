@@ -1,8 +1,8 @@
-Feature: As An Anonymous User
-  In order to use Muvins features
-  I want to sign up for a new account
+Feature: As Product Manager
+  So that the application has not false users
+  I want the user to confirm you e-mail after registration
 
-  Scenario: User Sign Up
+  Scenario: Account Activation
     Given that I am not logged in
     And I am on the Sign up page
     When I fill in "user_first_name" with "Juliano"
@@ -12,5 +12,5 @@ Feature: As An Anonymous User
     And I fill in "user_password_confirmation" with "password"
     And I fill in "user_lastfm_username" with "Juliano_maia"
     And I press "Cadastrar-se"
-    Then I should be on the homepage
-    And I should be a user of the system with email "leite.juliano@gmail.com"
+    When I access the activation link for email "leite.juliano@gmail.com"
+    Then my account with email "leite.juliano@gmail.com" should be activated

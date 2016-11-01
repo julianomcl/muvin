@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = 'Bem-vindo ao Muvin!'
-      session[:user_id] = @user.id
-      redirect_to '/'
+      @user.send_activation_email
+      flash[:info] = 'Por favor, verifique seu e-mail para ativar a sua conta.'
+      redirect_to root_url
     else
       render 'new'
     end
