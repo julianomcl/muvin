@@ -1,0 +1,5 @@
+Olá <%= @user.first_name %>,
+
+Bem-vindo(a) ao Muvin, para ativar sua conta clique no link abaixo:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

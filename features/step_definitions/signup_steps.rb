@@ -3,23 +3,21 @@ Given(/^that I am not logged in$/) do
 end
 
 Given(/^I am on the Sign up page$/) do
-  visit('/signup')
+  visit :signup
 end
 
-When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
-  fill_in(arg1, :with => arg2)
+When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, content|
+  fill_in field, :with => content
 end
 
 When(/^I press "([^"]*)"$/) do |button|
-  click_button(button)
-  @current_user = Factory(:user, :email => email)
-  cookies[:stub_user_id] = @current_user.id
+  click_button button
 end
 
 Then(/^I should be on the homepage$/) do
-  assert page.current_path == '/'
+  assert_current_path root_path
 end
 
-Then(/^I should be a user of the system$/) do
-  session[:user_id] = cookies[:stub_user_id]
+Then(/^I should be a user of the system with email "([^"]*)"$/) do |email|
+  User.find_by_email!(email)
 end

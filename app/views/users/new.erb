@@ -1,32 +1,30 @@
-<div class="login">
-  <div class="container">
-    <div class="form">
-      <h1>Cadastre-se</h1>
-      <%= form_for(@user) do |u| %>
-          <div class="field">
-            <%= u.label :nome %>
-            <%= u.text_field :first_name %>
-          </div>
-          <div class="field">
-            <%= u.label :sobrenome %>
-            <%= u.text_field :last_name %>
-          </div>
-          <div class="field">
-            <%= u.label :email %>
-            <%= u.email_field :email %>
-          </div>
-          <div class="field">
-            <%= u.label :senha %>
-            <%= u.password_field :password %>
-          </div>
-          <div class="field">
-            <%= u.label :usuario_lastfm %>
-            <%= u.text_field :lastfm_username %>
-          </div>
-          <div class="actions">
-            <%= u.submit "Cadastrar-se" %>
-          </div>
-      <% end %>
-    </div>
+<% provide(:title, 'Cadastre-se') %>
+<h1>Cadastre-se</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, url: signup_path) do |u| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= u.label :first_name, 'Nome' %>
+        <%= u.text_field :first_name, class: 'form-control' %>
+
+        <%= u.label :last_name, 'Sobrenome' %>
+        <%= u.text_field :last_name, class: 'form-control' %>
+
+        <%= u.label :email %>
+        <%= u.email_field :email, class: 'form-control' %>
+
+        <%= u.label :password, 'Senha' %>
+        <%= u.password_field :password, class: 'form-control' %>
+
+        <%= u.label :password_confirmation, 'Confirmação de Senha' %>
+        <%= u.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= u.label :lastfm_username, 'Usuário do Last.FM' %>
+        <%= u.text_field :lastfm_username, class: 'form-control' %>
+
+        <%= u.submit 'Cadastrar-se', id: 'signup', class: 'btn btn-primary' %>
+    <% end %>
   </div>
 </div>
