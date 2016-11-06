@@ -10,6 +10,9 @@ Rails.application.routes.draw do
 
   post 'login' => 'sessions#create'
   
+  get 'configurationviewer' => 'users#show'
+  
+  
   delete 'logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
