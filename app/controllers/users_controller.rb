@@ -5,8 +5,13 @@ class UsersController < ApplicationController
   end
   
   def show
-  @user = User.new
-  @user.email = 'teste'
+    
+    
+  @user = User.find_by(id: session[:user_id])
+
+  if @user.nil? then
+    redirect_to '/login'
+  end
   end
 
   def create
