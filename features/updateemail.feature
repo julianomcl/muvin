@@ -4,9 +4,13 @@ Feature: As An Registered User
 
 
   Scenario: User Update Email
-    Given that I am logged in
-    When I am on the Update page
-    And I fill in "current_email" with "lucassantana@gmail.com"
-    And I fill in "new_email" with "lucassantana.402@gmail.com"
+   Given that I am not logged in 
+    And I am on the Login page
+    When I fill "session_email" with "leite.juliano@gmail.com" 
+    And "session_password" with "password"
+    And I press "Log in"
+    Then I should visit Update Email page
+    And I fill "current_email" with "lucassantana@gmail.com" 
+    And "future_email" with "lucassantana.402@gmail.com"
     And I press "Confirm"
-    Then My e-mail should to be with the new email
+    And My current e-mail should to be with the new email
