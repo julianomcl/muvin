@@ -3,7 +3,13 @@ rvm:
  - 2.2
 gemfile:
   - Gemfile
+services:
+  - postgresql
+test:
+  adapter: postgresql
+  database: Muvin_test
 before_script:
+  - cp config/database.travis.yml config/database.yml
   - psql -c 'create database Muvin_test;' -U postgres
 before_install:
   - gem install nokogiri -- --with-cflags='--std=gnu99'
@@ -11,5 +17,7 @@ notifications:
   slack:
     on_success: change
     on_failure: change
-
-script: bundle exec rspec spec
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rake
