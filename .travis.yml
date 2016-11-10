@@ -3,6 +3,8 @@ rvm:
  - 2.2
 gemfile:
   - Gemfile
+before_script:
+  - psql -c 'create database Muvin_test;' -U postgres
 before_install:
   - gem install nokogiri -- --with-cflags='--std=gnu99'
 notifications:
