@@ -4,10 +4,7 @@ Feature: As An Registered User
 
 
   Scenario: User Viewer Configuration
-    Given that I ain't logged in
-    And I fill in "session_email" with "lucassantana@gmail.com"
-    And I fill in "session_password" with "123456"
-    And I press "Log in"
-    And That I now logged in
+    Given that I am logged in
+    When I am on the configuration view page
     Then I should see my configurations
     

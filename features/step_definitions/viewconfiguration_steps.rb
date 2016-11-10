@@ -1,19 +1,18 @@
-Given(/^that I ain't logged in$/) do
-  session = nil
+Given(/^that I am logged in$/) do
   visit :login
   fill_in "session_email", :with => "lucassantana@gmail.com"
   fill_in "session_password", :with => "123456"
   click_button "Log in"
 end
 
-Given(/That I now logged in$/) do
-    visit :configurationviewer
+When(/^I am on the configuration view page$/) do
+  visit :configurationviewer
 end
 
 Then(/^I should see my configurations$/) do
- User.find_by!(id: session[:user_id])
- # @user = User.find_by(id: session[:user_id])
-  #expect(page.text).to have_content("Lucas")
-  #expect(page).to have_content("Santana")
-  #expect(page).to have_content("lucassantana@gmail.com")
+  expect(page.text).to have_content("Lucas")
+  expect(page).to have_content("Santana")
+  expect(page).to have_content("lucassantana@gmail.com")
 end
+
+
