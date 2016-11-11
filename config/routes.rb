@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   
   get 'configurationviewer' => 'users#show'
   
+  get 'updateemail' => 'updateemail#new'
+  
+  post 'updateemail' => 'updateemail#create'
+  
   
   delete 'logout' => 'sessions#destroy'
 
