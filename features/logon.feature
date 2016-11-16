@@ -5,8 +5,8 @@ Feature: As An Anonymous User
   Scenario: User Log on
     Given that I am not logged in
     And I am on the Log on page
-    When I fill in "session_email" with "teste@teste.com"
-    And I fill in "session_password" with "123456"
+    And I fill in "session_email" with "example@railstutorial.org"
+    And I fill in "session_password" with "foobar"
     And I press "Log in"
     Then I should be on the homepage
     

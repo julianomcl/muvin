@@ -1,4 +1,4 @@
-Then(/^I should visit the configuration view page$/) do
+When(/^I visit the configuration view page$/) do
   visit '/configurationviewer'
 end
 
@@ -12,7 +12,11 @@ Then(/^I should see my configurations$/) do
   #expect(page.all).to have_text("leite.juliano@gmail.com")
 end
 
-Given(/^That I am on the homepage$/) do
-  visit root_path
-  
+Given(/^that I am logged in with email "([^"]*)" and password "([^"]*)"$/) do |email, password|
+  steps %Q{
+    I am on the Log on page
+    I fill in "session_email" with #{email}
+    I fill in "session_password" with #{password}
+    I press "Log in"
+  }
 end
