@@ -3,6 +3,7 @@ When(/^I visit the configuration view page$/) do
 end
 
 Then(/^I should see my configurations$/) do
+  pending
   #user = User.find_by_email("muller@gmail.com")
   user = User.find_by(id: session[:user_id])
   expect(user).to be_truthy
