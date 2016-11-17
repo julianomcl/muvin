@@ -3,6 +3,7 @@ Given(/^I am on the Login page$/) do
 end
 
 When(/^I visit Update Email page$/) do
+  pending
   visit :updateemail
 end
 
