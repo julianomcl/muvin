@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  include SessionsHelper
+  
   def new
     @user = User.new
   end
@@ -7,11 +8,14 @@ class UsersController < ApplicationController
   def show
     
     
-  @user = User.find_by(id: session[:user_id])
-
-  if @user.nil? then
-    redirect_to '/login'
+  #@user = User.find_by(id: session[:user_id])
+  if !is_user_logged_in? then
+    redirect_to '/login' 
   end
+
+  #if @user.nil? then
+  #  redirect_to '/login'
+  #end
   end
 
   def create
