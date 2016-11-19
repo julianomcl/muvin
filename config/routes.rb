@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'
   
+  get 'mysettings' => 'user_configuration#new'
+  
   get 'configurationviewer' => 'users#show'
   
   get 'updateemail' => 'user_configuration#updateemail'

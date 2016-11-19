@@ -1,6 +1,10 @@
 class UserConfigurationController < ApplicationController
     include SessionsHelper
     
+  def new
+  
+  end
+    
   def updateemail
     @user = get_current_user
     if is_user_logged_in? && @user.authenticate(@user.password)
