@@ -1,3 +1,0 @@
-class UserConfigurationsController < ApplicationController
-
-end

@@ -1,6 +1,10 @@
 class UpdateemailController < ApplicationController
-
-  def new
+  include SessionsHelper
+  
+  def updateemail
+    if !is_user_logged_in? then
+      redirect_to login_path
+    end
   end
   
   def create

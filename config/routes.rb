@@ -6,15 +6,16 @@ Rails.application.routes.draw do
   post '/signup' => 'users#create'
   resources :users
   resources :account_activations, only: [:edit]
+  
   get 'login' => 'sessions#new'
-
   post 'login' => 'sessions#create'
+  get 'logout' => 'sessions#destroy'
   
   get 'configurationviewer' => 'users#show'
   
-  get 'updateemail' => 'updateemail#new'
+  get 'updateemail' => 'user_configuration#updateemail'
   
-  post 'updateemail' => 'updateemail#create'
+  post 'updateemail' => 'user_configuration#create'
   
   
   delete 'logout' => 'sessions#destroy'
