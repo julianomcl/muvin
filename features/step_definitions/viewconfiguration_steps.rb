@@ -3,7 +3,7 @@ When(/^I visit the configuration view page$/) do
 end
 
 Then(/^I should see my configurations$/) do
-  pending
+  expect(page).to have_content("Minhas Configurações")
 end
 
 Given(/^that I am logged in with email "([^"]*)" and password "([^"]*)"$/) do |email, password|

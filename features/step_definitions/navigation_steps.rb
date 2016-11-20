@@ -9,3 +9,7 @@ end
 Then(/^I should be on the sign up page$/) do
   assert_current_path sign_up_path
 end
+
+Then(/^I should be on the login page$/) do
+  assert_current_path login_path
+end

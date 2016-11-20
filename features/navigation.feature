@@ -6,5 +6,7 @@ Feature: As User
     Given that I am on the homepage
     When I click on "Cadastre-se"
     Then I should be on the sign up page
-    When I click on "Home"
+    When I click on "Login"
+    Then I should be on the login page
+    When I click on "Muvin"
     Then I should be on the homepage
