@@ -12,5 +12,6 @@ Given(/^that I am logged in with email "([^"]*)" and password "([^"]*)"$/) do |e
     I fill in "session_email" with #{email}
     I fill in "session_password" with #{password}
     I press "Log in"
+    Then I should be on the homepage
   }
 end
