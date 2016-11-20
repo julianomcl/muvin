@@ -11,5 +11,6 @@ User.create!(first_name:  "Example",
              password:              "foobar",
              password_confirmation: "foobar",
              lastfm_username: "example_fm",
+             lastfm_token: "7111fd3f9d511699ec89317cb4004f77",
              activated: true,
              activated_at: Time.zone.now)
