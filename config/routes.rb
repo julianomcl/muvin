@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   
   get 'mysettings' => 'user_configuration#new'
+  get 'mysettings/configurelastfm' => 'user_configuration#newlastfmaccountsync', as: :mysettings_configurelastfm
+  patch 'mysettings/configurelastfm' => 'user_configuration#createlastfmaccountsync'
+  
+  get '/api/auth' => 'user_configuration#new'
   
   get 'configurationviewer' => 'users#show'
   

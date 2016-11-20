@@ -1,0 +1,15 @@
+<% provide(:title, 'Conta LastFM') %>
+<h1>Conta LastFM</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user, url: mysettings_configurelastfm_path)  do |u| %>
+        <%= render 'shared/error_messages' %>
+
+        <%= u.label :lastfm_username, 'Usuário do Last.FM' %>
+        <%= u.text_field :lastfm_username, class: 'form-control' %>
+
+        <%= u.submit 'Atualizar', id: 'signup', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
