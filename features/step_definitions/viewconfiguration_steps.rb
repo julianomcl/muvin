@@ -7,11 +7,9 @@ Then(/^I should see my configurations$/) do
 end
 
 Given(/^that I am logged in with email "([^"]*)" and password "([^"]*)"$/) do |email, password|
-  steps %Q{
-    I am on the Log on page
-    I fill in "session_email" with #{email}
-    I fill in "session_password" with #{password}
-    I press "Log in"
-    Then I should be on the homepage
-  }
+  step "I am on the Log on page"
+  step "I fill in \"session_email\" with \"#{email}\""
+  step "I fill in \"session_password\" with \"#{password}\""
+  step "I press \"Log in\""
+  step "I should be on the homepage"
 end
