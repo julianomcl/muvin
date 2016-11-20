@@ -1,0 +1,6 @@
+<%= form_for(:user_password_config, url: changepassword_path) do |f| %>
+  <%= f.password_field :password, :placeholder => "Senha Atual" %> 
+  <%= f.password_field :password_new, :placeholder => "Nova Senha" %> 
+  <%= f.password_field :password_new_confirm, :placeholder => "Confirmar Nova Senha" %> 
+  <%= f.submit "Redefinir", class: "btn-submit" %>
+<% end %>

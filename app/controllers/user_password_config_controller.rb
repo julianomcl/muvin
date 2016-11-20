@@ -10,6 +10,9 @@ class UserPasswordConfigController < ApplicationController
         @current_user = get_current_user
         
         
+    end
+    
+    def create
         
     end
 end
