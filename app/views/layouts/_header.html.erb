@@ -4,18 +4,18 @@
             <%= link_to 'Muvin', root_path, class: "navbar-brand" %>
         </div>
         <ul class="nav navbar-nav">
-            <li><%= if !is_user_logged_in? then
+            <li><%= unless is_user_logged_in?
                     link_to 'Cadastre-se', sign_up_path end%>
             </li>
-            <li><%= if !is_user_logged_in? then
+            <li><%= unless is_user_logged_in?
                     link_to 'Login', login_path end%>
             </li>
             
-            <li class="dropdown"><%= if is_user_logged_in? then
+            <li class="dropdown"><%= if is_user_logged_in?
                     link_to 'Minhas Configurações', mysettings_path, class: "dropdown-toggle" end%>
             </li>
             
-            <li><%= if is_user_logged_in? then
+            <li><%= if is_user_logged_in?
                     link_to 'Logout', logout_path end%>
             </li>
         </ul>
