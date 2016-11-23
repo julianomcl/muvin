@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-warn = $("warn");
 map = null;
 markers = [];
 function getLocation() {
