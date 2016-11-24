@@ -18,3 +18,7 @@ Location.create!(
     latitude: -23.565813199999997,
     longitude: -46.5556671,
     user_id: 1)
+SearchedLocation.create!(
+    latitude: -23.565813199999997,
+    longitude: -46.5556671,
+    user_id: 1)

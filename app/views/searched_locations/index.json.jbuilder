@@ -1,0 +1,1 @@
+json.array! @searched_locations, partial: 'searched_locations/searched_location', as: :searched_location

@@ -30,23 +30,8 @@ function setPosition(position) {
 
     console.log("Latitude: " + lat);
     console.log("Longitude: " + lon);
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/locations",
-        cache: false,
-        data: {
-            location: {
-                latitude: lat,
-                longitude: lon
-            }
-        },
-        success: function(){
 
-        },
-        error: function(){
-
-        }
-    });
+    saveLocation(lat, lon);
 
     markers.push(new google.maps.Marker({
         map: map,
@@ -123,6 +108,8 @@ function mapListeners(){
             console.log("Latitude: " + place.geometry.location.lat());
             console.log("Longitude: " + place.geometry.location.lng());
 
+            saveSearchedLocation(place.geometry.location.lat(), place.geometry.location.lng())
+
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
                 bounds.union(place.geometry.viewport);
@@ -133,4 +120,43 @@ function mapListeners(){
         map.fitBounds(bounds);
     });
     // [END region_getplaces]
+}
+function saveLocation(lat, lng) {
+    $.ajax({
+        type: "POST",
+        url: "/locations",
+        cache: false,
+        data: {
+            location: {
+                latitude: lat,
+                longitude: lng
+            }
+        },
+        success: function(){
+
+        },
+        error: function(){
+
+        }
+    });
+}
+
+function saveSearchedLocation(lat, lng) {
+    $.ajax({
+        type: "POST",
+        url: "/searched_locations",
+        cache: false,
+        data: {
+            searched_location: {
+                latitude: lat,
+                longitude: lng
+            }
+        },
+        success: function(){
+
+        },
+        error: function(){
+
+        }
+    });
 }

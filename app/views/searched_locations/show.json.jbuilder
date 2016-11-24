@@ -1,0 +1,1 @@
+json.partial! "searched_locations/searched_location", searched_location: @searched_location
