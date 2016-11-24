@@ -10,13 +10,20 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(location_params)
-    respond_to do |format|
-      if @location.save
-        format.json { render :show, status: :created, location: @location }
-        format.js {}
-      else
-        format.json { render json: @location.errors, status: :unprocessable_entity }
+    if is_user_logged_in?
+      @location = Location.new(location_params)
+      respond_to do |format|
+        if @location.save
+          format.json { render :show, status: :created, location: @location }
+          format.js {}
+        else
+          format.json { render json: @location.errors, status: :unprocessable_entity }
+          format.js {}
+        end
+      end
+    else
+      respond_to do |format|
+        format.json { render :index }
         format.js {}
       end
     end
