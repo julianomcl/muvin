@@ -30,6 +30,24 @@ function setPosition(position) {
 
     console.log("Latitude: " + lat);
     console.log("Longitude: " + lon);
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/locations",
+        cache: false,
+        data: {
+            location: {
+                latitude: lat,
+                longitude: lon
+            }
+        },
+        success: function(){
+
+        },
+        error: function(){
+
+        }
+    });
+
     markers.push(new google.maps.Marker({
         map: map,
         title: "Você está aqui!",
