@@ -38,6 +38,8 @@ gem 'rspec-rails', :group => [:development, :test]
 
 gem 'jasmine'
 
+gem 'coveralls', require: false
+
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
