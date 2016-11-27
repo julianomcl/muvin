@@ -83,14 +83,10 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-<<<<<<< HEAD
-    coffee-script-source (1.11.1)
-=======
     coffee-script-source (1.10.0)
     concord (0.1.5)
       adamantium (~> 0.2.0)
       equalizer (~> 0.0.9)
->>>>>>> c83f765904a2329a29dc01432758187ecb242802
     concurrent-ruby (1.0.2)
     coveralls (0.8.15)
       json (>= 1.8, < 3)
