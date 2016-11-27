@@ -1,19 +1,20 @@
 <% provide(:title, 'updateemail') %>
-<h1>Cadastre-se</h1>
+<h1>Alteração de email</h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user, url: signup_path) do |u| %>
+    <%= form_for(:updateemail, url: updateemail_path) do |u| %>
         <%= render 'shared/error_messages' %>
 
 
-        <%= u.label :current_email %>
-        <%= u.email_field :current_email, class: 'form-control' %>
+        <%= u.label :current_email, 'Email atual' %>
+        <%= u.email_field :current_email, class: 'form-control', :placeholder => 'Email atual' %>
 
-        <%= u.label :future_email %>
-        <%= u.email_field :future_email, class: 'form-control' %>
+        <%= u.label :future_email, 'Novo email' %>
+        <%= u.email_field :future_email, class: 'form-control', :placeholder => 'Novo email' %>
 
         <%= u.submit 'Confirm', id: 'updateemail', class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>
+
