@@ -8,5 +8,5 @@ When(/^I visit Update Email page$/) do
 end
 
 Then(/^My current e\-mail should be "([^"]*)"$/) do |email|
-  pending # Write code here that turns the phrase above into concrete actions
+  visit :login
 end
