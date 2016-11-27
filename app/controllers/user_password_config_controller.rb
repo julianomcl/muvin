@@ -7,9 +7,6 @@ class UserPasswordConfigController < ApplicationController
             redirect_to root_path
         end
         
-        @current_user = get_current_user
-        
-        
-        
+        @current_user = get_current_user\
     end
 end
