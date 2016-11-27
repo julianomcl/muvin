@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :locations
   attr_accessor :activation_token
   before_save :downcase_email
   before_create :create_activation_digest

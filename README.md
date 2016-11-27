@@ -22,6 +22,9 @@ Lucas Santana - 9050204
 **Code Climate:**
 [![Code Climate](https://codeclimate.com/github/julianomcl/muvin/badges/gpa.svg)](https://codeclimate.com/github/julianomcl/muvin)
 
+**Coverage**
+[![Coverage Status](https://coveralls.io/repos/github/julianomcl/muvin/badge.svg?branch=master)](https://coveralls.io/github/julianomcl/muvin?branch=master)
+
 **Heroku:** https://muvin.herokuapp.com/
 
 **Pivotal Tracker:** https://www.pivotaltracker.com/n/projects/1862733

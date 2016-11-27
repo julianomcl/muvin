@@ -1,0 +1,2 @@
+module SearchedLocationsHelper
+end
