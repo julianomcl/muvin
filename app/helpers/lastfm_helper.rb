@@ -14,7 +14,7 @@ module LastfmHelper
         for index in 0 ... hash.size
             track = hash[index]
             t = Time.at(Integer(track['date']['uts']))
-            if(t < Time.now - days_span.days)
+            if t < Time.now - days_span.days
                 next
             end
             #puts "#{track['artist']['#text']} - #{track['name']} = #{t}" #exemplo de fetch
