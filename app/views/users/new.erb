@@ -7,22 +7,23 @@
         <%= render 'shared/error_messages' %>
 
         <%= u.label :first_name, 'Nome' %>
-        <%= u.text_field :first_name, class: 'form-control' %>
+        <%= u.text_field :first_name, class: 'form-control', :placeholder => 'Nome' %>
 
         <%= u.label :last_name, 'Sobrenome' %>
-        <%= u.text_field :last_name, class: 'form-control' %>
+        <%= u.text_field :last_name, class: 'form-control', :placeholder => 'Sobrenome' %>
 
-        <%= u.label :email %>
-        <%= u.email_field :email, class: 'form-control' %>
+        <%= u.label :email, 'E-mail' %>
+        <%= u.email_field :email, class: 'form-control', :placeholder => 'E-mail' %>
 
         <%= u.label :password, 'Senha' %>
-        <%= u.password_field :password, class: 'form-control' %>
+        <%= u.password_field :password, class: 'form-control', :placeholder => 'Senha' %>
 
         <%= u.label :password_confirmation, 'Confirmação de Senha' %>
-        <%= u.password_field :password_confirmation, class: 'form-control' %>
+        <%= u.password_field :password_confirmation, class: 'form-control',
+                             :placeholder => 'Confirmação de Senha' %>
 
         <%= u.label :lastfm_username, 'Usuário do Last.FM' %>
-        <%= u.text_field :lastfm_username, class: 'form-control' %>
+        <%= u.text_field :lastfm_username, class: 'form-control', :placeholder => 'Usuário do Last.FM' %>
 
         <%= u.submit 'Cadastrar-se', id: 'signup', class: 'btn btn-primary' %>
     <% end %>

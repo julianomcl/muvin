@@ -2,7 +2,7 @@ class UpdateemailController < ApplicationController
   include SessionsHelper
   
   def updateemail
-    if !is_user_logged_in? then
+    unless is_user_logged_in?
       redirect_to login_path
     end
   end

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new', as: :sign_up
   post '/signup' => 'users#create'
   resources :users
+  resources :locations
+  resources :searched_locations
   resources :account_activations, only: [:edit]
   
   get 'login' => 'sessions#new'
@@ -12,6 +14,10 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   
   get 'mysettings' => 'user_configuration#new'
+  get 'mysettings/configurelastfm' => 'user_configuration#newlastfmaccountsync', as: :mysettings_configurelastfm
+  patch 'mysettings/configurelastfm' => 'user_configuration#createlastfmaccountsync'
+  
+  get '/api/auth' => 'user_configuration#new'
   
   get 'configurationviewer' => 'users#show'
   

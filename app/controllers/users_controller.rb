@@ -6,13 +6,13 @@ class UsersController < ApplicationController
   end
   
   def show
-    if !is_user_logged_in? then
+    unless is_user_logged_in?
       redirect_to '/login' 
     end
     
     @user = User.find_by(id: session[:user_id])
     
-    if @user.nil? then
+    if @user.nil?
       redirect_to '/login'
     end
   end
