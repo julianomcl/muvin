@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20161127163939) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "lastfm_username"
+    t.string   "lastfm_token"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "activation_digest"
