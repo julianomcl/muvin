@@ -27,6 +27,19 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def spotify
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    hash = spotify_user.to_hash
+    @user = User.find_by(:id => session[:user_id])
+    @user.spotify = request.env['omniauth.auth']
+    @abc = request.env['omniauth.auth']
+    @user.save
+    session[:hash] = hash
+    
+    @spotify_user = RSpotify::User.new(hash)
+    
+  end
 
   private
     def user_params
