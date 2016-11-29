@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :searched_locations
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
