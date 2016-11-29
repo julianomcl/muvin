@@ -22,5 +22,6 @@ module Muvin
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    RSpotify::authenticate('e88b652294534e41aa46f9845bc3c6a3', 'c18c2c68c9de462db109ccc91af71e49')
   end
 end

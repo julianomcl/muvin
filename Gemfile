@@ -42,6 +42,9 @@ gem 'coveralls', require: false
 gem 'flog'
 gem 'metric_fu'
 
+gem 'ffi'
+gem 'rspotify'
+
 group :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
