@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20161128234321) do
-=======
 ActiveRecord::Schema.define(version: 20161129015507) do
->>>>>>> 668c1fb23afdf07f2b5e11238ffb5dc1b8d38b9a
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,17 +46,15 @@ ActiveRecord::Schema.define(version: 20161129015507) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "lastfm_username"
+    t.string   "lastfm_token"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "activation_digest"
     t.boolean  "activated",         default: false
     t.datetime "activated_at"
-<<<<<<< HEAD
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-=======
     t.text     "spotify"
->>>>>>> 668c1fb23afdf07f2b5e11238ffb5dc1b8d38b9a
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
