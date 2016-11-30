@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = User.create(first_name:  "Example",
+User.create!(first_name:  "Example",
              last_name:  "User",
              email: "example@railstutorial.org",
              password:              "foobar",
@@ -17,8 +17,8 @@ user = User.create(first_name:  "Example",
 Location.create!(
     latitude: -23.565813199999997,
     longitude: -46.5556671,
-    user: user)
+    user_id: 1)
 SearchedLocation.create!(
     latitude: -23.565813199999997,
     longitude: -46.5556671,
-    user: user)
+    user_id: 1)
