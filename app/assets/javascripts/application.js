@@ -31,7 +31,8 @@ function setPosition(position) {
     console.log("Latitude: " + lat);
     console.log("Longitude: " + lon);
 
-    saveLocation(lat, lon);
+    var data = {location: {latitude: lat, longitude: lon}};
+    ajaxSave('/locations', data);
 
     markers.push(new google.maps.Marker({
         map: map,
@@ -84,7 +85,7 @@ function mapListeners(){
     searchBox.addListener('places_changed', function() {
         var places = searchBox.getPlaces();
 
-        if (places.length == 0) {
+        if (places.length === 0) {
             return;
         }
 
@@ -108,7 +109,8 @@ function mapListeners(){
             console.log("Latitude: " + place.geometry.location.lat());
             console.log("Longitude: " + place.geometry.location.lng());
 
-            saveSearchedLocation(place.geometry.location.lat(), place.geometry.location.lng())
+            var data = {searched_location: {latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng()}};
+            ajaxSave('/searched_locations', data);
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -121,37 +123,12 @@ function mapListeners(){
     });
     // [END region_getplaces]
 }
-function saveLocation(lat, lng) {
+function ajaxSave(path, data){
     $.ajax({
         type: "POST",
-        url: "/locations",
+        url: path,
         cache: false,
-        data: {
-            location: {
-                latitude: lat,
-                longitude: lng
-            }
-        },
-        success: function(){
-
-        },
-        error: function(){
-
-        }
-    });
-}
-
-function saveSearchedLocation(lat, lng) {
-    $.ajax({
-        type: "POST",
-        url: "/searched_locations",
-        cache: false,
-        data: {
-            searched_location: {
-                latitude: lat,
-                longitude: lng
-            }
-        },
+        data: data,
         success: function(){
 
         },
