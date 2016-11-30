@@ -1,7 +1,18 @@
 <% provide(:title, 'Home') %>
 
-
-<input id="pac-input" class="controls" type="text" placeholder="Buscar Local">
-<div id="map"></div>
+<div class="row">
+    <div class="col-xs-12 col-md-9">
+        <input id="pac-input" class="controls" type="text" placeholder="Buscar Local">
+        <div id="map"></div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+        <div id="musics">
+            <% @spotify_musics.first(10).each do |music| %>
+                <%= music.embed({height: 80}).html_safe %>
+            <% end %>
+        </div>
+        <%= link_to 'Criar Playlist', '/playlist/create' if is_user_logged_in? %>
+    </div>
+</div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxXL6ruaRsbEpHLereD5TQDEdae07fDQM&libraries=places&callback=getLocation" async defer></script>

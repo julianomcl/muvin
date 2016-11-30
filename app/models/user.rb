@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :locations
   has_many :searched_locations
   attr_accessor :activation_token
-  serialize :spotify, JSON
+  serialize :spotify, Hash
   before_save :downcase_email
   before_create :create_activation_digest
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

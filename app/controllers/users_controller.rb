@@ -39,6 +39,8 @@ class UsersController < ApplicationController
     
     @spotify_user = RSpotify::User.new(hash)
     
+    redirect_to root_url
+    
   end
 
   private

@@ -3,9 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #map {
   height: 450px;
-  position: inherit !important;
   &> div {
-    width: 85% !important;
     height: 450px !important;
   }
 }
