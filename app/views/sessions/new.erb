@@ -10,6 +10,7 @@
 
         <%= f.label :password, 'Senha' %>
         <%= f.password_field :password, class: 'form-control', :placeholder => 'Senha' %>
+        <%= link_to "Esqueci a senha", new_password_reset_path %>
 
         <%= f.submit 'Log in', class: 'btn btn-primary' %>
     <% end %>
