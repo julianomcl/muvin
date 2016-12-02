@@ -18,7 +18,7 @@ class Music < ActiveRecord::Base
 
         unless @locations.blank?
           @musics = Music.group(:track_name).where(location_id: locations_ids).limit(10).order('COUNT(*) DESC').count
-          break
+          break unless @musics.blank?
         end
     end
 
