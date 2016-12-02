@@ -6,13 +6,10 @@ class WelcomeController < ApplicationController
     if is_user_logged_in?
       location = Location.find_by(:user_id => session[:user_id])
       if location != nil
-        @locations = nil
-        @locations = Location.get_by_distance(location, 1)
-        @locations = Location.get_by_distance(location, 10) if @locations.blank?
-        musics = Music.get_musics_by_location(location)
+        musics = Music.get_most_played(location)
 
         musics.each do |music|
-          m = RSpotify::Track.search(music.track_name).first
+          m = RSpotify::Track.search(music[0]).first
           @spotify_musics.push(m) unless m.nil?
         end
       end
