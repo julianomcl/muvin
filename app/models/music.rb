@@ -9,7 +9,7 @@ class Music < ActiveRecord::Base
 
     distancias = [1,3,5,10,100,1000,5000,10000,20000]
     @musics = []
-    for index in 0 ... distancias.size
+    (0...distancias.size).each do |index|
         @locations = Location.get_by_distance(location, distancias[index])
         locations_ids = []
         @locations.each do |l|

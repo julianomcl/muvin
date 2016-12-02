@@ -11,4 +11,16 @@ class Location < ActiveRecord::Base
       * POWER(SIN((#{location.longitude} - longitude) 
       *  pi()/180 / 2), 2) ))) < #{distance}")
   end
+
+  def Location.get_location_nearby(location)
+    distances = [1, 3, 5, 10, 100, 1000, 5000]
+    (0...distances.size).each do |index|
+      locations = Location.get_by_distance(location, distances[index])
+      return locations.first unless locations.blank?
+    end
+
+    nil
+
+  end
+
 end

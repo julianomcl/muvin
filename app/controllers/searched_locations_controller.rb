@@ -12,10 +12,11 @@ class SearchedLocationsController < ApplicationController
   def create
     if is_user_logged_in?
       @searched_location = SearchedLocation.new(searched_location_params)
+      @location = Location.get_location_nearby(@searched_location)
 
       respond_to do |format|
         if @searched_location.save
-          format.json { render :show, status: :created, location: @searched_location }
+          format.json { render :show, status: :created, location: @location }
           format.js {}
         else
           format.json { render json: @searched_location.errors, status: :unprocessable_entity }
