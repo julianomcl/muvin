@@ -139,17 +139,21 @@ function ajaxSave(path, data){
 }
 
 function getMostPlayedMusics(location_id) {
+    div = $('#musics');
+    button = $('#playlist');
+    div.html('');
+    button.hide();
     $.ajax({
         type: "POST",
         url: '/musics/most-played',
         cache: false,
         data: { location_id: location_id },
         success: function(data){
-            div = $('#musics');
-            div.html('');
             data.forEach(function(e){
-                setTimeout(div.append(e.url), 1000);
+                div.append(e.iframe);
             });
+            $('#location').val(location_id);
+            button.show();
         },
         error: function(){
 

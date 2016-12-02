@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :musics
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  
+
+  post '/spotify/playlist' => 'users#playlist', as: :spotify_playlist
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   get 'logout' => 'sessions#destroy'

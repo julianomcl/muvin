@@ -32,8 +32,9 @@ class Music < ActiveRecord::Base
     spotify_musics = []
 
     musics.each do |music|
-      m = RSpotify::Track.search(music[0]).first.embed({height: 80})
-      spotify_musics.push(m) unless m.nil?
+      m = RSpotify::Track.search(music[0]).first
+      iframe = m.embed({height: 80})
+      spotify_musics.push(iframe) unless m.nil?
     end
 
     spotify_musics

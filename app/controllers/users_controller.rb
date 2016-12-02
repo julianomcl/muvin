@@ -43,6 +43,27 @@ class UsersController < ApplicationController
     
   end
 
+  def playlist
+    if session[:hash] == nil
+      redirect_to '/auth/spotify'
+    else
+
+      spotify_user = RSpotify::User.new(session[:hash])
+      playlist = spotify_user.create_playlist!('muvin-playlist')
+      location = Location.find(params[:location])
+      musics = Music.get_most_played(location)
+
+      musics.each do |m|
+        playlist.add_tracks!(m)
+      end
+
+      flash[:success] = 'Playlist criada com sucesso!'
+      redirect_to root_url
+
+    end
+
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email,

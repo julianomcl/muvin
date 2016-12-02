@@ -1,3 +1,3 @@
 json.array!(@musics) do |music|
-  json.url music
+  json.iframe music
 end
