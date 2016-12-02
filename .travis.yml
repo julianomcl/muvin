@@ -8,6 +8,9 @@ services:
 test:
   adapter: postgresql
   database: Muvin_test
+addons:
+  code_climate:
+    repo_token: 25c9a2162adaf812a4dfdcbd25217349e46da6774de885518ebcd3bb499bb4cc
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database Muvin_test;' -U postgres
@@ -21,6 +24,5 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rake db:seed RAILS_ENV=test --trace
   - bundle exec rake
-addons:
-    code_climate:
-        repo_token: 25c9a2162adaf812a4dfdcbd25217349e46da6774de885518ebcd3bb499bb4cc
+after_success:
+  - bundle exec codeclimate-test-reporter
