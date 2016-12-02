@@ -45,16 +45,16 @@ function setPosition(position) {
 function showError(error) {
     switch (error.code) {
         case error.PERMISSION_DENIED:
-            alert("Usuário rejeitou a solicitação de Geolocalização.");
+            console.log("Usuário rejeitou a solicitação de Geolocalização.");
             break;
         case error.POSITION_UNAVAILABLE:
-            alert("Localização indisponível.");
+            console.log("Localização indisponível.");
             break;
         case error.TIMEOUT:
-            alert("O tempo da requisição expirou.");
+            console.log("O tempo da requisição expirou.");
             break;
         case error.UNKNOWN_ERROR:
-            alert("Algum erro desconhecido aconteceu.");
+            console.log("Algum erro desconhecido aconteceu.");
             break;
     }
 }

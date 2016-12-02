@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     if is_user_logged_in?
       @location = Location.new(location_params)
       user = get_current_user
-      curloc = Location.where("abs(latitude) - #{@location.latitude.abs} < 0.001 AND abs(longitude) - #{@location.longitude.abs} < 0.001 AND user_id = #{user.id}").first
+      curloc = Location.where('abs(latitude) - ? < 0.001 AND abs(longitude) - ? < 0.001 AND user_id = ?', @location.latitude.abs, @location.longitude.abs, user.id).first
       unless curloc.nil?
         @location = curloc
       end
@@ -23,7 +23,7 @@ class LocationsController < ApplicationController
           format.json { render :show, status: :created, location: @location }
           format.js {}
           recenttracks = get_recent_tracks(user.id, 15, @location)
-          recenttracks.each do |index, track|
+          recenttracks.each do |_index, track|
             music = Music.new
             music.artist_name = track['artist']['#text']
             music.location_id = @location.id
