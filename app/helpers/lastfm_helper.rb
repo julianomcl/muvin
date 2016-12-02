@@ -27,6 +27,7 @@ module LastfmHelper
         i = 0
         for index in 0 ... hash.size
             track = hash[index]
+            puts track
             t = Time.at(Integer(track['date']['uts']))
             if(t < last_song)
                 next

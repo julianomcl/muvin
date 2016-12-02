@@ -14,7 +14,7 @@ class LocationsController < ApplicationController
     if is_user_logged_in?
       @location = Location.new(location_params)
       user = get_current_user
-      curloc = Location.where("latitude - #{@location.latitude} < 0.1 AND longitude - #{@location.longitude} < 0.1 AND user_id = #{user.id}").first
+      curloc = Location.where("abs(latitude) - #{@location.latitude.abs} < 0.001 AND abs(longitude) - #{@location.longitude.abs} < 0.001 AND user_id = #{user.id}").first
       unless curloc.nil?
         @location = curloc
       end
