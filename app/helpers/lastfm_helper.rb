@@ -26,12 +26,14 @@ module LastfmHelper
         i = 0
         (0...hash.size).each do |index|
             track = hash[index]
-            t = Time.at(Integer(track['date']['uts']))
-            if t < last_song
-                next
+            unless track['date'].nil?
+                t = Time.at(Integer(track['date']['uts']))
+                if t < last_song
+                    next
+                end
+                validsongs[i] = track
+                i += 1
             end
-            validsongs[i] = track
-            i += 1
         end
 
         validsongs
