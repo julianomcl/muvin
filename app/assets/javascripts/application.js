@@ -129,8 +129,27 @@ function ajaxSave(path, data){
         url: path,
         cache: false,
         data: data,
-        success: function(){
+        success: function(data){
+            getMostPlayedMusics(data.id);
+        },
+        error: function(){
 
+        }
+    });
+}
+
+function getMostPlayedMusics(location_id) {
+    $.ajax({
+        type: "POST",
+        url: '/musics/most-played',
+        cache: false,
+        data: { location_id: location_id },
+        success: function(data){
+            div = $('#musics');
+            div.html('');
+            data.forEach(function(e){
+                setTimeout(div.append(e.url), 1000);
+            });
         },
         error: function(){
 

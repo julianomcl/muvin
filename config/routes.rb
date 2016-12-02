@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :locations
   resources :searched_locations
+  resources :musics
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   
@@ -15,7 +16,9 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
   
   get '/auth/spotify/callback', to: 'users#spotify'
-  
+
+  post '/musics/most-played' => 'musics#most_played'
+
   get 'mysettings' => 'user_configuration#new'
   get 'mysettings/configurelastfm' => 'user_configuration#newlastfmaccountsync', as: :mysettings_configurelastfm
   patch 'mysettings/configurelastfm' => 'user_configuration#createlastfmaccountsync'
