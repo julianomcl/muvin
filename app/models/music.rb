@@ -7,7 +7,7 @@ class Music < ActiveRecord::Base
 
   def Music.get_most_played(location)
 
-    distancias = [1,3,5,10]
+    distancias = [1,3,5,10,100,1000,5000,10000,20000]
     @musics = []
     for index in 0 ... distancias.size
         @locations = Location.get_by_distance(location, distancias[index])
@@ -24,6 +24,20 @@ class Music < ActiveRecord::Base
 
     @musics
 
+  end
+  
+  def Music.get_spotify_most_played(location)
+    
+    musics = Music.get_most_played(location)
+    spotify_musics = []
+
+    musics.each do |music|
+      m = RSpotify::Track.search(music[0]).first
+      spotify_musics.push(m) unless m.nil?
+    end
+    
+    spotify_musics
+    
   end
 
   def Music.get_embed_most_played(location)

@@ -49,13 +49,11 @@ class UsersController < ApplicationController
     else
 
       spotify_user = RSpotify::User.new(session[:hash])
-      playlist = spotify_user.create_playlist!('muvin-playlist')
+      playlist = spotify_user.create_playlist!('muvin-playlist-' + Date.current().to_formatted_s(:db))
       location = Location.find(params[:location])
-      musics = Music.get_most_played(location)
+      musics = Music.get_spotify_most_played(location)
 
-      musics.each do |m|
-        playlist.add_tracks!(m)
-      end
+      playlist.add_tracks!(musics)
 
       flash[:success] = 'Playlist criada com sucesso!'
       redirect_to root_url

@@ -11,7 +11,6 @@ module LastfmHelper
             return nil
         end
         url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + user.lastfm_username + '&api_key=' + APIKEY + '&format=json'
-        puts url
         uri = URI(url)
         response = Net::HTTP.get(uri)
         responsehash = JSON.parse(response)
@@ -27,7 +26,6 @@ module LastfmHelper
         i = 0
         for index in 0 ... hash.size
             track = hash[index]
-            puts track
             t = Time.at(Integer(track['date']['uts']))
             if(t < last_song)
                 next
