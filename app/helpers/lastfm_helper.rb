@@ -13,16 +13,16 @@ module LastfmHelper
         url = 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=' + user.lastfm_username + '&api_key=' + APIKEY + '&format=json'
         uri = URI(url)
         response = Net::HTTP.get(uri)
-        responsehash = JSON.parse(response)
-        unless responsehash['error'].nil?
+        response_hash = JSON.parse(response)
+        unless response_hash['error'].nil?
             return nil
         end
-        hash = responsehash['recenttracks']['track']
+        hash = response_hash['recenttracks']['track']
         last_song = Date.today - days_span
-        if !location.nil? && location.musics.any?
+        if !location.nil? and location.musics.any?
             last_song = location.musics.maximum('created_at')
         end
-        validsongs = Hash.new
+        valid_songs = Hash.new
         i = 0
         (0...hash.size).each do |index|
             track = hash[index]
@@ -31,11 +31,11 @@ module LastfmHelper
                 if t < last_song
                     next
                 end
-                validsongs[i] = track
+                valid_songs[i] = track
                 i += 1
             end
         end
 
-        validsongs
+        valid_songs
     end
 end
