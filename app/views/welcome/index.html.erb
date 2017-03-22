@@ -10,6 +10,8 @@
 
     <form action="<%= spotify_playlist_path %>" method="post">
       <input type="hidden" id="location" name="location" value="" />
+      <input type="hidden" id="latitude" name="latitude" value="" />
+      <input type="hidden" id="longitude" name="longitude" value="" />
       <%= token_tag %>
       <input type="submit" id="playlist" class="btn btn-primary" style="display: none" value="Gerar Playlist" />
     </form>

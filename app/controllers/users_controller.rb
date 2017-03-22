@@ -31,10 +31,11 @@ class UsersController < ApplicationController
   def spotify
     spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     hash = spotify_user.to_hash
-    @user = User.find_by(:id => session[:user_id])
-    @user.spotify = request.env['omniauth.auth']
-    @abc = request.env['omniauth.auth']
-    @user.save
+    if is_user_logged_in?
+      @user = User.find_by(:id => session[:user_id])
+      @user.spotify = request.env['omniauth.auth']
+      @user.save
+    end
     session[:hash] = hash
     
     @spotify_user = RSpotify::User.new(hash)
@@ -50,8 +51,14 @@ class UsersController < ApplicationController
 
       spotify_user = RSpotify::User.new(session[:hash])
       playlist = spotify_user.create_playlist!('muvin-playlist-' + Date.current().to_formatted_s(:db))
-      location = Location.find(params[:location])
-      musics = Music.get_spotify_most_played(location)
+      if params[:location] != ''
+        @location = Location.find(params[:location])
+      else 
+        @location = Location.new
+        @location.latitude = params[:latitude]
+        @location.longitude = params[:longitude]
+      end
+      musics = Music.get_spotify_most_played(@location)
 
       playlist.add_tracks!(musics)
 

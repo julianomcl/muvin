@@ -33,6 +33,7 @@ function setPosition(position) {
 
     var data = {location: {latitude: lat, longitude: lon}};
     ajaxSave('/locations', data);
+    getMostPlayedMusics(data);
 
     markers.push(new google.maps.Marker({
         map: map,
@@ -109,8 +110,9 @@ function mapListeners(){
             console.log("Latitude: " + place.geometry.location.lat());
             console.log("Longitude: " + place.geometry.location.lng());
 
-            var data = {searched_location: {latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng()}};
-            ajaxSave('/searched_locations', data);
+            var data = {latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng()};
+            ajaxSave('/searched_locations', {searched_location: data});
+            getMostPlayedMusics({location: data});
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -130,7 +132,8 @@ function ajaxSave(path, data){
         cache: false,
         data: data,
         success: function(data){
-            getMostPlayedMusics(data.id);
+            if(data.id != null)
+                $('#location').val(data.id);
         },
         error: function(){
 
@@ -138,7 +141,7 @@ function ajaxSave(path, data){
     });
 }
 
-function getMostPlayedMusics(location_id) {
+function getMostPlayedMusics(location) {
     div = $('#musics');
     button = $('#playlist');
     div.html('');
@@ -147,12 +150,13 @@ function getMostPlayedMusics(location_id) {
         type: "POST",
         url: '/musics/most-played',
         cache: false,
-        data: { location_id: location_id },
+        data: location,
         success: function(data){
             data.forEach(function(e){
                 div.append(e.iframe);
             });
-            $('#location').val(location_id);
+            $('#latitude').val(location.location.latitude);
+            $('#longitude').val(location.location.longitude);
             button.show();
         },
         error: function(){
