@@ -6,7 +6,12 @@
     <div id="map"></div>
   </div>
   <div class="col-xs-12 col-md-3">
-    <div id="musics"></div>
+    <div id="info">
+      <p>Estas são as músicas mais ouvidas desta região.</p>
+    </div>
+    <div id="musics">
+      <p id="error"></p>
+    </div>
 
     <form action="<%= spotify_playlist_path %>" method="post">
       <input type="hidden" id="location" name="location" value="" />

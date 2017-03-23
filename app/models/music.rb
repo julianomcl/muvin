@@ -8,21 +8,21 @@ class Music < ActiveRecord::Base
   def Music.get_most_played(location)
 
     distancias = [1,3,5,10,100,1000,5000,10000,20000]
-    @musics = []
+    musics = []
     (0...distancias.size).each do |index|
-        @locations = Location.get_by_distance(location, distancias[index])
+        locations = Location.get_by_distance(location, distancias[index])
         locations_ids = []
-        @locations.each do |l|
+        locations.each do |l|
           locations_ids.push(l.id)
         end
 
-        unless @locations.blank?
-          @musics = Music.group(:track_name).where(location_id: locations_ids).limit(10).order('COUNT(*) DESC').count
-          break unless @musics.blank?
+        unless locations.blank?
+          musics = Music.group(:track_name).where(location_id: locations_ids).limit(10).order('COUNT(*) DESC').count
+          break unless musics.blank?
         end
     end
 
-    @musics
+    musics
 
   end
   

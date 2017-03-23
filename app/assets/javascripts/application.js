@@ -34,6 +34,7 @@ function setPosition(position) {
     var data = {location: {latitude: lat, longitude: lon}};
     ajaxSave('/locations', data);
     getMostPlayedMusics(data);
+    $('#info').show();
 
     markers.push(new google.maps.Marker({
         map: map,
@@ -47,12 +48,15 @@ function showError(error) {
     switch (error.code) {
         case error.PERMISSION_DENIED:
             console.log("Usuário rejeitou a solicitação de Geolocalização.");
+            $("#error").html("Para ver as músicas mais ouvidas em sua região habilite a localização de seu navegador.");
             break;
         case error.POSITION_UNAVAILABLE:
             console.log("Localização indisponível.");
+            $("#error").html("Não foi possível identificar sua localização. Busque uma região para visualizar as músicas mais ouvidas.");
             break;
         case error.TIMEOUT:
             console.log("O tempo da requisição expirou.");
+            $("#error").html("Oh! Houve um problema para identificar sua localização.");
             break;
         case error.UNKNOWN_ERROR:
             console.log("Algum erro desconhecido aconteceu.");
@@ -113,6 +117,7 @@ function mapListeners(){
             var data = {latitude: place.geometry.location.lat(), longitude: place.geometry.location.lng()};
             ajaxSave('/searched_locations', {searched_location: data});
             getMostPlayedMusics({location: data});
+            $('#info').show();
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
