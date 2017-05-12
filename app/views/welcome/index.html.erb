@@ -9,10 +9,6 @@
     <div id="info">
       <p>Estas são as músicas mais ouvidas desta região.</p>
     </div>
-    <div id="musics">
-      <p id="error"></p>
-    </div>
-
     <form action="<%= spotify_playlist_path %>" method="post">
       <input type="hidden" id="location" name="location" value="" />
       <input type="hidden" id="latitude" name="latitude" value="" />
@@ -20,6 +16,11 @@
       <%= token_tag %>
       <input type="submit" id="playlist" class="btn btn-primary" style="display: none" value="Gerar Playlist" />
     </form>
+    <br/>
+    <div id="musics">
+      <p id="error"></p>
+    </div>
+
   </div>
 </div>
 
