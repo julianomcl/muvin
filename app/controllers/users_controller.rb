@@ -36,6 +36,7 @@ class UsersController < ApplicationController
     end
     
     @spotify_user = RSpotify::User.new(hash)
+    flash[:success] = 'Sincronizado com o Spotify! Agora você já pode gerar playlists!'
     
     redirect_to root_url
     

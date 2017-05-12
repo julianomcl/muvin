@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
             <%= link_to 'Muvin', root_path, class: "navbar-brand" %>
@@ -11,8 +11,9 @@
                     link_to 'Login', login_path end%>
             </li>
             
-            <li class="dropdown"><%= if is_user_logged_in?
-                    link_to 'Minhas Configurações', mysettings_path, class: "dropdown-toggle" end%>
+            <li class="dropdown">
+            <%= if is_user_logged_in? and session[:hash].nil?
+                    link_to 'Sincronizar com Spotify', '/auth/spotify', class: "dropdown-toggle" end%>
             </li>
             
             <li><%= if is_user_logged_in?
