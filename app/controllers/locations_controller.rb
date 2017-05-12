@@ -15,7 +15,7 @@ class LocationsController < ApplicationController
       @location = Location.new(location_params)
       user = get_current_user
       curloc = Location.where("abs(abs(latitude) - ?) < 0.001 AND abs(abs(longitude) - ?) < 0.001 
-            AND DATE_PART('day', ? - created_at) < 7 AND user_id = ?", 
+          AND DATE_PART('day', ? - created_at) < 7 AND user_id = ?", 
             @location.latitude.abs, @location.longitude.abs, DateTime.now, user.id)
           .first
       unless curloc.nil?
@@ -29,7 +29,7 @@ class LocationsController < ApplicationController
             if user.spotify.blank?
               redirect_to '/auth/spotify'
             else
-              unless Music.where("location_id = ? AND DATE_PART('day', ? - created_at) > 7", 
+              if Music.where("location_id = ? AND DATE_PART('day', ? - created_at) < 7", 
                   @location.id, DateTime.now).first.nil?
                 user_spotify = RSpotify::User.new(user.spotify)
                 top_tracks = user_spotify.top_tracks(time_range: 'short_term')
