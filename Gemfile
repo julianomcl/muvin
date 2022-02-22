@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.4.6'
+gem 'rails', '5.2.6.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0', '>= 5.0.6'
+gem 'sass-rails', '~> 5.1', '>= 5.1.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'rspec-rails', '>= 3.5.2', :group => [:development, :test]
+gem 'rspec-rails', '>= 5.0.2', :group => [:development, :test]
 
 gem 'jasmine', '>= 2.5.1'
 
@@ -46,7 +46,7 @@ gem 'ffi', '>= 1.9.24'
 gem 'rspotify', '>= 2.10.0'
 
 group :test do
-  gem 'cucumber-rails', '>= 2.1.0', :require => false
+  gem 'cucumber-rails', '>= 2.4.0', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
 
